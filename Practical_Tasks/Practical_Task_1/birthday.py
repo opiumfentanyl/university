@@ -1,6 +1,6 @@
 from random import randrange
 
-def birthday(attempts: int = 1000 , peoples: int = 23):
+def birthday(attempts: int = 10000 , peoples: int = 23):
     count = 0
     for i in range (attempts):
         dates=[]
@@ -12,5 +12,7 @@ def birthday(attempts: int = 1000 , peoples: int = 23):
                     count+=1
                     break
     return ((count/attempts)*100)
-
-
+def main():
+    print(birthday(),"%")
+if __name__ =="__main__":
+    main()

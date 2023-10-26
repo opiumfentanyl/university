@@ -1,4 +1,7 @@
-from montyhall import *
-def showw():
-    print(str(monty_hall())+'%')
-showw()
+from montyhall import*
+from birthday import*
+def show():
+    print(montyhall(),"%")
+    print(birthday(),"%")
+if __name__ == "__main__":
+    show()
