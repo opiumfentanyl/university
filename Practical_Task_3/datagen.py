@@ -9,4 +9,3 @@ def get_records(record, path=r"D:\practice3\record.txt"): #ввел путь, к
         record_file.seek(0)
         record_file.write(str(cur_record))
         return cur_record
-

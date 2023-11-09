@@ -1,4 +1,4 @@
-def read_file(path='D:\practice4\data.txt'): #ссылка на расположение файла на домашнем ПК
+def read_file(path='D:\qqq\practice4\data.txt'): #ссылка на расположение файла на домашнем ПК
     with open(path,mode='r',encoding='utf8') as text:
         word = text.read().split()
         l=[]
@@ -7,7 +7,7 @@ def read_file(path='D:\practice4\data.txt'): #ссылка на располож
         words = set(l)
         return sorted(words)
 
-def save_file(path='D:\practice4\count.txt',words=read_file()): #ссылка на расположение файла на домашнем ПК
+def save_file(path='D:\qqq\practice4\count.txt',words=read_file()): #ссылка на расположение файла на домашнем ПК
     with open(path,mode='w', encoding='utf8') as new:
         new.write('Всего уникальных слов: '+str(len(words))+ '\n===================================================\n')
         for i in range(len(words)):
