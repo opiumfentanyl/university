@@ -1,0 +1,76 @@
+вы|we|5
+в|in|4
+какой|which|4
+да|Yes|4
+мы|we're|3
+я|I|3
+ксерокопия|photocopy|2
+и|and|2
+можно|May I come in? |2
+хорошо|good|2
+офис|office|2
+конечно|sure|2
+но|Not edged|2
+к|к|2
+добрый|good|1
+весь|весь|1
+свидание|date|1
+до|to|1
+подойти|approach|1
+а|a|1
+свидетельство|certificate|1
+страховой|insurance|1
+паспорт|passport|1
+иметь|have	a|1
+себя|it|1
+при|at|1
+отлично|Excellent|1
+устроить|have|1
+утро|morning|1
+8|8|1
+завтра|tomorrow|1
+встреча|meeting|1
+осуществить|осуществить|1
+быть|be|1
+время|Time|1
+занятый|busy|1
+немного|few|1
+сейчас|Now,|1
+только|only|1
+наш|En|1
+увидеть|um, see|1
+там|there|1
+2|2|1
+дом|house|1
+строитель|builder|1
+проспект|Prospect|1
+адрес|Address:|1
+по|under|1
+удовольствие|Pleasure|1
+с|c|1
+подъехать|drive up|1
+бы|would|1
+немочь|немочь|1
+помочь|help|1
+мочь|might|1
+чем|.|1
+вопрос|question|1
+кой|Coy|1
+решить|determine|1
+нужно|necessary than what you need for this|1
+подходить|FIT|1
+целое|integer|1
+новость|news|1
+то|than|1
+есть|yes|1
+работа|work|1
+на|Moscow City Committee for State Registration of Real Estate Titles|1
+заявка|order|1
+назад|ago|1
+неделя|week|1
+оставлять|putting|1
+слушать|listen|1
+внимательно|внимательно|1
+здравствуйте|hello|1
+михаил|Michael|1
+это|is|1
