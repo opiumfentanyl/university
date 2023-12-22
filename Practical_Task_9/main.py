@@ -12,7 +12,6 @@ def pick_one(path):
     pdf=all_pdf()
     for i in range(len(pdf)):
         print(f"{i + 1}. {pdf[i]}")
-        print()
     choise = input("Введите номер файла для преобразования (чтобы преобразовать все файлы из каталога, введите 0):").strip()
     if choise == '0':
         all_pdf_to_docx(path)
@@ -25,7 +24,6 @@ def pick_two(path):
     docx=all_docx()
     for i in range(len(docx)):
         print(f"{i + 1}. {docx[i]}")
-        print()
     choise=input("Введите номер файла для преобразования (чтобы преобразовать все файлы из каталога, введите 0):").strip()
     if choise == '0':
         all_docx_to_pdf(path)
@@ -38,7 +36,6 @@ def pick_three(path):
     img=all_img()
     for i in range(len(img)):
         print(f"{i + 1}. {img[i]}")
-        print()
     choise=input("Введите номер файла для преобразования (чтобы преобразовать все файлы из каталога, введите 0):").strip()
     if choise == '0':
         compres_all(path)
