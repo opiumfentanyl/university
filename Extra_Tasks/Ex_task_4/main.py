@@ -12,7 +12,6 @@ for match in matches:
 
 with open('data.csv', 'w', newline='') as file:
     writer = csv.writer(file, delimiter=',')
-    writer.writerow(['names', 'address', 'phones', 'work_time'])
 
     for i in lst:
         writer.writerow(i)
