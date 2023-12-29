@@ -1,3 +1,5 @@
+import os
+
 import PySimpleGUI as sg
 from task9allnodules import*
 
@@ -6,10 +8,10 @@ def window():
     layout=[
         [sg.Text(f'Текущая дериктория: {current_catalog()}', key="TEXT_DIRECTORY")],
         [sg.Button('Сменить рабочий каталог', key="switchDirectory")],
-        [sg.Button('Преобразовать PDF в Docx', key="pdfToDocx", disabled=True)],
-        [sg.Button('Преобразовать Docx в PDF', key="docxToPdf", disabled=True)],
-        [sg.Button('Произвести сжатие изображения', key="compressor", disabled=True)],
-        [sg.Button('Удалить группу файлов', key="deletes", disabled=True)],
+        [sg.Button('Преобразовать PDF в Docx', key="pdfToDocx")],
+        [sg.Button('Преобразовать Docx в PDF', key="docxToPdf")],
+        [sg.Button('Произвести сжатие изображения', key="compressor")],
+        [sg.Button('Удалить группу файлов', key="deletes")],
         [sg.Button('Выход')]
     ]
     window = sg.Window("Office Tweaks", layout, finalize=True)
@@ -31,7 +33,7 @@ def window():
             layout_conversion = [
                 [sg.Text("Выберите файлы для конвертации:")],
                 *[[sg.Checkbox(file, key=file)] for file in pdf_files],
-                [sg.Button("Конвертировать файл", key=convert), sg.Button("Отмена")]
+                [sg.Button("Конвертировать файл"), sg.Button("Отмена")]
             ]
             window_conversion = sg.Window("Файлы для конвертации", layout_conversion)
 
@@ -40,11 +42,11 @@ def window():
                 if event_conversion in (sg.WIN_CLOSED, "Отмена"):
                     break
 
-                elif event_conversion == "convert":
+                elif event_conversion == "Конвертировать файл":
                     selected_files = [file for file in pdf_files if values_conversion[file]]
                     for i in selected_files:
-                        pdf_to_docx()
-            window_conversion.close()
+                        pdf_to_docx(i)
+                window_conversion.close()
 
 
         if event == "docxToPdf":
@@ -52,7 +54,7 @@ def window():
             layout_conversion = [
                 [sg.Text("Выберите файлы для конвертации:")],
                 *[[sg.Checkbox(file, key=file)] for file in docx_files],
-                [sg.Button("Конвертировать файл", key=convert), sg.Button("Отмена")]
+                [sg.Button("Конвертировать файл"), sg.Button("Отмена")]
             ]
             window_conversion = sg.Window("Файлы для конвертации", layout_conversion)
 
@@ -61,11 +63,11 @@ def window():
                 if event_conversion in (sg.WIN_CLOSED, "Отмена"):
                     break
 
-                elif event_conversion == "convert":
+                elif event_conversion == "Конвертировать файл":
                     selected_files = [file for file in docx_files if values_conversion[file]]
                     for i in selected_files:
                         docx_to_pdf(i)
-            window_conversion.close()
+                window_conversion.close()
 
 
         if event == "compressor":
@@ -73,7 +75,7 @@ def window():
             layout_conversion = [
                 [sg.Text("Выберите изображения для конвертации:")],
                 *[[sg.Checkbox(file, key=file)] for file in img_files],
-                [sg.Text("Процент сжатия:"), sg.Slider(range=(1, 100), key="compression_slider")],
+                [sg.Text("Процент сжатия:"), sg.Slider(range=(1, 100), orientation='h', key="compression_slider")],
                 [sg.Button("Сжать"), sg.Button("Отмена")]
             ]
             window_conversion = sg.Window("Файлы для конвертации", layout_conversion)
@@ -83,28 +85,29 @@ def window():
                 if event_conversion in (sg.WIN_CLOSED, "Отмена"):
                     break
 
-                elif event_conversion == "Сжать изображения":
+                elif event_conversion == "Сжать":
                     selected_files = [file for file in img_files if values_conversion[file]]
                     qlty = int(values_conversion["compression_slider"])
                     for i in selected_files:
                         compress(i, qlty)
-            window_conversion.close()
+                window_conversion.close()
 
 
         if event == 'deletes':
             layout_del = [
                 [sg.Text("Выберите критерий удаления:")],
-                [sg.Radio('Удалить все файлы начинающиеся на определенную подстроку',key='f1')],
-                [sg.Radio('Удалить все файлы заканчивающиеся на определенную подстроку',key='f2')],
-                [sg.Radio('Удалить все файлы содержащие определенную подстроку', key='f3')],
-                [sg.Radio('Удалить все файлы по расширению', key='f4')],
-                [sg.Text("Введите подстроку:"), sg.InputText(key='substring')],
+                [sg.Radio('Удалить все файлы начинающиеся на определенную подстроку',group_id = "group1",key='f1')],
+                [sg.Radio('Удалить все файлы заканчивающиеся на определенную подстроку',group_id = "group1",key='f2')],
+                [sg.Radio('Удалить все файлы содержащие определенную подстроку',group_id = "group1", key='f3')],
+                [sg.Radio('Удалить все файлы по расширению',group_id = "group1", key='f4')],
+                [sg.Text("Введите подстроку:"), sg.InputText(key='substr')],
                 [sg.Button('Выбор'), sg.Button('Отмена')]
             ]
             window_del = sg.Window("Методы удаления", layout_del)
             pick = None
             substr = None
             while True:
+                path = os.getcwd()
                 event_del, values_del = window_del.read()
                 if event_del in (sg.WIN_CLOSED, "Отмена"):
                     break
@@ -118,22 +121,22 @@ def window():
 
                     if pick == 1:
                         files = []
-                        for file in os.listdir(os.getcwd):
+                        for file in os.listdir(path):
                             if file.startswith(substr):
                                 files.append(file)
                     elif pick == 2:
                         files = []
-                        for file in os.listdir(os.getcwd):
+                        for file in os.listdir(path):
                             if file.rsplit(".", 1)[0].endswith(substr):
                                 files.append(file)
                     elif pick == 3:
                         files = []
-                        for file in os.listdir(os.getcwd):
+                        for file in os.listdir(path):
                             if substr in file.rsplit(".", 1)[0]:
                                 files.append(file)
                     elif pick == 4:
                         files = []
-                        for file in os.listdir(os.getcwd):
+                        for file in os.listdir(path):
                             if substr in file.rsplit(".", 1)[1]:
                                 files.append(file)
                     layout_p=[

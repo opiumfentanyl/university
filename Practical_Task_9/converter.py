@@ -17,7 +17,8 @@ def all_pdf_to_docx(path:list):
 
 def docx_to_pdf(file_docx:str):
     '''Функция онвертирует path (путь к файлу) из формата docx в pdf'''
-    convert(file_docx, file_docx + ".pdf")
+    convert(file_docx, file_docx.replace(".docx","") + ".pdf")
+
 
 def all_docx_to_pdf(path:list):
     '''Функция конвертирует в path (путь к файлу) все файлы фаормата docx в pdf'''
@@ -27,7 +28,7 @@ def all_docx_to_pdf(path:list):
 def compress(file_img:str):
     '''Функция сжимает изображение из файла path на указанное число процентов'''
     image_file = Image.open(file_img)
-    qlty=int(input("Введите параметры сжатия (от 0 до 100%.)"))
+    qlty=int(input("Введите параметры сжатия (от 0 до 100%): "))
     image_file.save(file_img, quality=qlty)
 
 def compres_all(path):
