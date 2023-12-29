@@ -19,7 +19,7 @@ def delete(path:str):
             for file in files:
                 os.remove(file)
                 print("Файлы успешно удалёны!")
-                files.clear()
+
 
     elif pick == "2":
         Str = str(input("Введите номер подстроки: "))
@@ -33,7 +33,7 @@ def delete(path:str):
             for file in files:
                 os.remove(file)
                 print("Файлы успешно удалены!")
-                files.clear()
+
 
     elif pick == "3":
         Str = str(input("Введите номер подстроки: "))
@@ -47,7 +47,7 @@ def delete(path:str):
             for file in files:
                 os.remove(file)
                 print("Файлы успешно удалены!")
-                files.clear()
+
 
     elif pick == "4":
         Str= str(input("Введите ресширение: "))
@@ -61,4 +61,3 @@ def delete(path:str):
             for file in files:
                 os.remove(file)
                 print("Файлы успешно удалены!")
-                files.clear()
